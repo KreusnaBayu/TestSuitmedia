@@ -6,50 +6,110 @@ import 'package:apktest/widgets/reusable_button.dart';
 class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Mendapatkan nama dari FirstScreen dan nama pengguna yang dipilih
     final palindromeProvider = Provider.of<PalindromeProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Ikon untuk tombol back
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.pop(context); // Kembali ke layar sebelumnya
+            Navigator.pop(context);
           },
         ),
         title: Padding(
-          padding: const EdgeInsets.only(left: 80.0), 
-          child: Text(
-            'Welcome',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          padding: EdgeInsets.only(right: 45.0),
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Second Screen',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
           ),
         ),
-        backgroundColor: Colors.blue, // Warna kustom untuk AppBar
-        automaticallyImplyLeading: false, // Menghapus tombol back default
+        backgroundColor: Colors.teal[600],
+        
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Label dinamis untuk nama dari FirstScreen
             Text(
-              'Name: ${palindromeProvider.name}',
-              style: TextStyle(fontSize: 18),
+              'Welcome',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: Colors.teal[800],
+              ),
             ),
-            SizedBox(height: 8.0),
-            // Label dinamis untuk nama pengguna yang dipilih
             Text(
-              'Selected User: ${palindromeProvider.selectedUserName.isNotEmpty ? palindromeProvider.selectedUserName : 'None'}',
-              style: TextStyle(fontSize: 18),
+              palindromeProvider.name,
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w700,
+                color: Colors.teal[900],
+              ),
             ),
-            SizedBox(height: 16.0),
-            // Tombol "Choose a User" untuk navigasi ke ThirdScreen
+            SizedBox(height: 24.0),
+            Expanded(
+              child: Center(
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: Colors.teal[50],
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        spreadRadius: 2,
+                        blurRadius: 6,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Selected User ',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.teal[800],
+                          ),
+                        ),
+                        Text(
+                          palindromeProvider.selectedUserName.isNotEmpty
+                              ? palindromeProvider.selectedUserName
+                              : 'Name',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.teal[800],
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 24.0),
             ReusableButton(
               title: 'Choose a User',
               onPressed: () {
                 Navigator.pushNamed(context, '/third');
               },
+              /* color: Colors.teal,
+              textColor: Colors.white, */
             ),
           ],
         ),

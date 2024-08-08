@@ -31,9 +31,9 @@ class PalindromeProvider with ChangeNotifier {
 
   String getPalindromeMessage() {
     if (isPalindrome(_sentence)) {
-      return "isPalindrome";
+      return "Kalimat / Kata ini Palindrome";
     } else {
-      return "not palindrome";
+      return "Ini Bukan Palindrome";
     }
   }
 }

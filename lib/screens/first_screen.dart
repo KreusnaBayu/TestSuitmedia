@@ -16,8 +16,8 @@ class FirstScreen extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              hexToColor('#77DDAA'), 
-              hexToColor('#77DDDD'), 
+              hexToColor('#003C43'), 
+              hexToColor('#E3FEF7'), 
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -32,9 +32,9 @@ class FirstScreen extends StatelessWidget {
               Center(
                 child: ReusableCircleAvatar(
                   imagePath: 'assets/profile.png',
-                  radius: 80.0, // Adjust the size as needed
-                  borderColor: Colors.red, // Custom border color
-                  borderWidth: 2.0, // Custom border width
+                  radius: 80.0, 
+                  borderColor: Colors.white, 
+                  borderWidth: 2.0, 
                 ),
               ),
               SizedBox(height: 32.0),
